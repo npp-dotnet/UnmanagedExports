@@ -14,7 +14,7 @@ using System.Security.Permissions;
 namespace RGiesecke.DllExport.MSBuild
 {
     [LoadInSeparateAppDomain]
-    [PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
+    [SecurityPermission(SecurityAction.InheritanceDemand)]
     public class DllExportAppDomainIsolatedTask : AppDomainIsolatedTask, IDllExportTask, IInputValues, IServiceProvider
     {
         private readonly ExportTaskImplementation<DllExportAppDomainIsolatedTask> _ExportTaskImplementation;

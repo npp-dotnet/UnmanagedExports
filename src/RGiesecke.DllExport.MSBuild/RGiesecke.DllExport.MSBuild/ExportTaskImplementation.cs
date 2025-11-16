@@ -533,6 +533,7 @@ namespace RGiesecke.DllExport.MSBuild
                     }
                     catch (FileNotFoundException ex)
                     {
+                        this._ActualTask.Log.LogErrorFromException(ex);
                         assembly = (Assembly)null;
                     }
                     if (assembly != null)
@@ -561,6 +562,7 @@ namespace RGiesecke.DllExport.MSBuild
                }
                catch (ArgumentException ex)
                {
+                   this._ActualTask.Log.LogErrorFromException(ex);
                    return (string)null;
                }
            });

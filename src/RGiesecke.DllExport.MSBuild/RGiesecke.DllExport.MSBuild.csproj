@@ -1,91 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!--Project was exported from assembly: C:\Users\k.gosse\.nuget\packages\unmanagedexports.repack\1.0.0\tasks\RGiesecke.DllExport.MSBuild.dll-->
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AF861B2B-C0B8-4472-AF1A-D59B1030588B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AssemblyName>RGiesecke.DllExport.MSBuild</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <ApplicationVersion>1.2.7.38851</ApplicationVersion>
-    <FileAlignment>512</FileAlignment>
-    <RootNamespace>RGiesecke.DllExport</RootNamespace>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile />
+    <TargetFramework>net472</TargetFramework>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Build.Framework.16.0.461\lib\net472\Microsoft.Build.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Build.Utilities.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Build.Utilities.Core.16.0.461\lib\net472\Microsoft.Build.Utilities.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.Setup.Configuration.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.VisualStudio.Setup.Configuration.Interop.1.16.30\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Mono.Cecil, Version=0.9.5.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xaml" />
+    <PackageReference Include="Microsoft.Build.Utilities.Core" Version="18.0.2" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="RGiesecke.DllExport\DllExportServiceProviderExtensions.cs" />
-    <Compile Include="RGiesecke.DllExport\DllExportVersion.cs" />
-    <Compile Include="RGiesecke.DllExport\Null.cs" />
-    <Compile Include="RGiesecke.DllExport\Set.cs" />
-    <Compile Include="RGiesecke.DllExport.MSBuild\AssemblyLoadingRedirection.cs" />
-    <Compile Include="RGiesecke.DllExport.MSBuild\IDllExportTask.cs" />
-    <Compile Include="RGiesecke.DllExport.MSBuild\DllExportAppDomainIsolatedTask.cs" />
-    <Compile Include="RGiesecke.DllExport.MSBuild\ExportTaskImplementation.cs" />
-    <Compile Include="RGiesecke.DllExport.MSBuild\DllExportTask.cs" />
-    <Compile Include="RGiesecke.DllExport.MSBuild\Properties\Resources.Designer.cs" />
-    <Compile Include="AssemblyInfo.cs" />
+    <ProjectReference Include="..\RGiesecke.DllExport\RGiesecke.DllExport.csproj" PrivateAssets="all" />
   </ItemGroup>
+
   <ItemGroup>
-    <EmbeddedResource Include="MSBuild\Properties\Resources.resx" />
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
+      <DependentUpon>Properties\Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Properties\Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RGiesecke.DllExport\RGiesecke.DllExport.csproj">
-      <Project>{e0d71aa7-aeb8-45f2-9304-6ad6c03ab4ae}</Project>
-      <Name>RGiesecke.DllExport</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

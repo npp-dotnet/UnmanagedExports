@@ -13,10 +13,11 @@ using System.IO;
 using System.Security.Permissions;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Runtime.ExceptionServices;
 
 namespace RGiesecke.DllExport.Parsing
 {
-  [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
+  [SecurityPermission(SecurityAction.LinkDemand)]
   public sealed class IlAsm : IlToolBase
   {
     private static readonly Regex _NormalizeIlErrorLineRegex = new Regex("(?:\\n|\\s|\\t|\\r|\\-|\\:|\\,)+", RegexOptions.Compiled);
@@ -165,7 +166,8 @@ namespace RGiesecke.DllExport.Parsing
       {
         if (File.Exists(path))
           File.Delete(path);
-        throw;
+        ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+        return -1;
       }
     }
 
@@ -194,7 +196,8 @@ namespace RGiesecke.DllExport.Parsing
       {
         if (File.Exists(path))
           File.Delete(path);
-        throw;
+        ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+        return string.Empty;
       }
     }
 

@@ -11,7 +11,7 @@ using System.Security.Permissions;
 
 namespace RGiesecke.DllExport.Parsing
 {
-  [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
+  [SecurityPermission(SecurityAction.LinkDemand)]
   public sealed class IlDasm : IlToolBase
   {
     public IlDasm(IServiceProvider serviceProvider, IInputValues inputValues)

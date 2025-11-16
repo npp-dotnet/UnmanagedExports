@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>Npp.DotNet.UnmanagedExports</PackageId>
+    <PackageVersion>1.0.0-alpha.0</PackageVersion>
+    <Description>.NET SDK port of UnmanagedExports.Repack.Upgrade</Description>
+    <Authors>Robert Giesecke, repacked by Kevin Gosse, upgraded MS Build Utility by StEn, ported to .NET SDK by the Npp.NET Team</Authors>
+    <RepositoryUrl>https://github.com/npp-dotnet/UnmanagedExports</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
+    <PackageTags>dllexport;unmanaged;exports;export</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <DevelopmentDependency>true</DevelopmentDependency>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RGiesecke.DllExport.MSBuild\RGiesecke.DllExport.MSBuild.csproj" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="$(MSBuildProjectDirectory)\..\..\README.md" Pack="true" PackagePath="/" />
+    <Content Include="$(MSBuildProjectDirectory)\..\..\nuget\build\$(PackageId).targets" Pack="true" PackagePath="/build" />
+    <Content Include="$(OutputPath)\Mono.Cecil.dll" Pack="true" PackagePath="/tasks" />
+    <Content Include="$(OutputPath)\RGiesecke.DllExport.dll" Pack="true" PackagePath="/tasks" />
+    <Content Include="$(OutputPath)\RGiesecke.DllExport.MSBuild.dll" Pack="true" PackagePath="/tasks" />
+  </ItemGroup>
+
+  <Target Name="CopyPackage" AfterTargets="Pack">
+    <Copy SourceFiles="$(PackageOutputPath)\$(PackageId).$(PackageVersion).nupkg"
+          DestinationFolder="$(MSBuildProjectDirectory)\..\.." />
+  </Target>
+
+</Project>

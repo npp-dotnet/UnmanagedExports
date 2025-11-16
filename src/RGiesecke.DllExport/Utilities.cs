@@ -82,7 +82,8 @@ namespace RGiesecke.DllExport
       catch (Exception ex)
       {
         instance.Dispose();
-        throw;
+        System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+        return default;
       }
     }
 

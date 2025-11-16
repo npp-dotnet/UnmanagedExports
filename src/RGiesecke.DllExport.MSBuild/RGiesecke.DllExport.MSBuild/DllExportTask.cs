@@ -13,7 +13,7 @@ using System.Security.Permissions;
 
 namespace RGiesecke.DllExport.MSBuild
 {
-    [PermissionSet(SecurityAction.InheritanceDemand, Name = "FullTrust")]
+    [SecurityPermission(SecurityAction.InheritanceDemand)]
     public class DllExportTask : Task, IDllExportTask, IInputValues, IServiceProvider
     {
         private readonly ExportTaskImplementation<DllExportTask> _ExportTaskImplementation;

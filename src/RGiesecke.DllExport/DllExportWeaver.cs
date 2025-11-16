@@ -15,7 +15,7 @@ using System.Text;
 
 namespace RGiesecke.DllExport
 {
-  [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
+  [SecurityPermission(SecurityAction.LinkDemand)]
   public sealed class DllExportWeaver : HasServiceProvider
   {
     private int _Timeout = 45000;
